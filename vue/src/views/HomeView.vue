@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>Michael Severns</h1>
+    <h2>Full-Stack Java developer</h2>
+
   
   </div>
 </template>
@@ -11,9 +13,12 @@ export default {
 </script>
 
 <style scoped>
+
     .home {
-      background-image: url('https://res.cloudinary.com/drr6cwmiz/image/upload/v1732140929/hero_xrn9m0.png');
+      background-image: url("base-images/pexels-felixmittermeier-956981.jpg");
       background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       background-position: center;
       height: 100vh;
     }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p id="copyright">&#169; Java Blue Enterprises</p>
+    <p id="copyright">&#169; Michael Severns</p>
   </div>
 </template>
 

@@ -6,10 +6,8 @@ import HomeView from '../views/HomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import LogoutView from '../views/LogoutView.vue';
 import RegisterView from '../views/RegisterView.vue';
-import ItemSearchView from '../views/ItemSearchView.vue';
-import AddItemView from '../views/AddItemView.vue';
-import WeatherReportView from '../views/WeatherReportView.vue';
-import NasaPictureView from '../views/NasaPictureView.vue';
+import AboutView from "@/views/AboutView.vue";
+import ProjectView from "@/views/ProjectView.vue";
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -24,66 +22,39 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    meta: {
-      requiresAuth: false
-    }
+    meta: { requiresAuth: false }
   },
-  {
-    path: '/searchItem',
-    name: 'searchItem',
-    component: ItemSearchView,
-    meta: {
-      requiresAuth: false
-    }
-  },  
-  {
-    path: '/addItem',
-    name: 'addItem',
-    component: AddItemView,
-    meta: {
-      requiresAuth: false
-    }
-  }, 
-  {
-    path: '/weather',
-    name: 'weather',
-    component: WeatherReportView,
-    meta: {
-      requiresAuth: false
-    }
-  },   
-  {
-    path: '/pic',
-    name: 'pic',
-    component: NasaPictureView,
-    meta: {
-      requiresAuth: false
-    }
-  },  
   {
     path: "/login",
     name: "login",
     component: LoginView,
-    meta: {
-      requiresAuth: false
-    }
+    meta: { requiresAuth: false }
   },
   {
     path: "/logout",
     name: "logout",
     component: LogoutView,
-    meta: {
-      requiresAuth: false
-    }
+    meta: { requiresAuth: false }
   },
   {
     path: "/register",
     name: "register",
     component: RegisterView,
-    meta: {
-      requiresAuth: false
-    }
-  }
+    meta: { requiresAuth: false }
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: AboutView,
+    meta: { requiresAuth: false }
+  },
+  {
+    path: "/project",
+    name: "project",
+    component: ProjectView,
+    meta: { requiresAuth: false }
+  },
+
 ];
 
 // Create the router
