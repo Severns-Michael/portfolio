@@ -12,6 +12,7 @@ export default {
 
 <style scoped>
 .projects {
+  background-image: url("pexels.jpg");
 
   background-size: cover;
   background-position: center;
