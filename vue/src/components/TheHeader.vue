@@ -1,98 +1,91 @@
 <template>
   <div id="container">
-    <!-- Navigation Bar -->
+    <!-- Header -->
     <div id="nav">
-      <!-- Logo on the left side -->
       <div id="logo">
-        <img src="../assets/logo.png" alt="Logo" class="logo-icon" />
+        <img src="public/logo 3.xcf" alt="Logo" class="logo-icon" />
       </div>
-
-      <!-- Navigation Images (Home, About, Projects, etc.) -->
       <router-link v-bind:to="{ name: 'home' }">
-        <img src="fallout home button.PNG" alt="Home" class="nav-icon" />
+        <img src="public/home icon.png" alt="Home" class="nav-icon" />
       </router-link>
       <router-link v-bind:to="{ name: 'about' }">
-        <img src="../assets/about.png" alt="About" class="nav-icon" />
+        <img src="public/person imagine 2.jpg" alt="About" class="nav-icon" />
       </router-link>
       <router-link v-bind:to="{ name: 'project' }">
-        <img src="../assets/projects.png" alt="Projects" class="nav-icon" />
+        <img src="public/project icon.png" alt="Projects" class="nav-icon" />
       </router-link>
-
-      <!-- Social Media Icons -->
       <a href="https://www.linkedin.com/in/michaelsevernsdev/" target="_blank">
-        <img src="../assets/linkedin.png" alt="LinkedIn" class="social-icon" />
+        <img src="public/linkedin icon.png" alt="LinkedIn" class="social-icon" />
       </a>
       <a href="https://github.com/Severns-Michael" target="_blank">
-        <img src="../assets/github.png" alt="GitHub" class="social-icon" />
+        <img src="public/github icon.png" alt="GitHub" class="social-icon" />
       </a>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  // Add component logic if needed
-}
+export default {};
 </script>
 
 <style scoped>
-/* Container to hold the navbar and social media icons */
+
 #container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
 }
 
-/* Navigation Bar Styling (combined with Social Media Icons) */
+/* Navigation Bar */
 #nav {
   display: flex;
-  justify-content: flex-start; /* Align items from left to right */
   align-items: center;
-  background-color: #333;
-  padding: 10px 0;
-  width: 100%;
+  justify-content: center;
+  padding: 10px 20px;
+  width: 40%;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 25px;
+  background-color: hsla(0, 0%, 20%, 40%);
+  backdrop-filter: blur(10px);
+  margin-top: 10px;
+
 }
 
-/* Logo Styling */
+/* Logo */
 #logo {
-  margin-right: 20px; /* Space between logo and nav items */
+  margin-right: 20px;
 }
-
 .logo-icon {
-  width: 50px; /* Set size of the logo */
+  width: 50px;
   height: auto;
 }
 
-/* Navigation Images Styling (Home, About, Projects, etc.) */
-#nav a {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-.nav-icon {
-  width: 40px; /* Set size of the navigation icons */
-  height: 40px;
-  border-radius: 50%; /* Optional: Make icons circular */
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.nav-icon:hover {
-  transform: scale(1.1); /* Zoom effect on hover */
-}
-
-/* Social Media Icons Styling */
+/* Navigation Links */
+.nav-icon,
 .social-icon {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin: 0 10px;
   object-fit: cover;
   transition: transform 0.3s ease;
-  margin-left: 10px; /* Add space between the links and icons */
 }
 
+.nav-icon:hover,
 .social-icon:hover {
-  transform: scale(1.1); /* Zoom effect on hover */
+  transform: scale(1.1);
+}
+
+#content {
+  margin-top: 20px;
+  padding: 0 20px;
+  line-height: 1.6;
+  font-size: 16px;
 }
 </style>

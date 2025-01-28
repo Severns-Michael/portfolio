@@ -1,9 +1,9 @@
 <template>
-  <div id="capstone-app">
+  <div id="app">
     <the-header />
     <router-view />
     <the-footer />
-    <terminal-page />
+
   </div>
 </template>
 
@@ -11,19 +11,40 @@
 
 import TheHeader from '../src/components/TheHeader.vue';
 import TheFooter from '../src/components/TheFooter.vue';
-import TerminalPage from './components/TerminalPage.vue';
+
 
 
 export default {
   components: {
     TheHeader,
     TheFooter,
-    TerminalPage,
   }
 
 }
 </script>
 
-<style>
+<style scoped>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+#main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
 
 </style>
