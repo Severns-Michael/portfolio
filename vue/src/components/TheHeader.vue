@@ -3,22 +3,22 @@
     <!-- Header -->
     <div id="nav">
       <div id="logo">
-        <img src="public/logo 3.xcf" alt="Logo" class="logo-icon" />
+        <img src="public/logo 3(1).png" alt="Logo" class="logo-icon" />
       </div>
-      <router-link v-bind:to="{ name: 'home' }">
-        <img src="public/home icon.png" alt="Home" class="nav-icon" />
+      <router-link v-bind:to="{ name: 'home' }" class="nav-button"> Home
+<!--        <img src="public/home icon.png" alt="Home" class="nav-icon" />-->
       </router-link>
-      <router-link v-bind:to="{ name: 'about' }">
-        <img src="public/person imagine 2.jpg" alt="About" class="nav-icon" />
+      <router-link v-bind:to="{ name: 'about' }" class="nav-button"> About
+<!--        <img src="public/person imagine 2.jpg" alt="About" class="nav-icon" />-->
       </router-link>
-      <router-link v-bind:to="{ name: 'project' }">
-        <img src="public/project icon.png" alt="Projects" class="nav-icon" />
+      <router-link v-bind:to="{ name: 'project' }" class="nav-button"> Projects
+<!--        <img src="public/project icon.png" alt="Projects" class="nav-icon" />-->
       </router-link>
-      <a href="https://www.linkedin.com/in/michaelsevernsdev/" target="_blank">
-        <img src="public/linkedin icon.png" alt="LinkedIn" class="social-icon" />
+      <a href="https://www.linkedin.com/in/michaelsevernsdev/" target="_blank" class="nav-button"> LinkedIn
+<!--        <img src="public/linkedin icon.png" alt="LinkedIn" class="social-icon" />-->
       </a>
-      <a href="https://github.com/Severns-Michael" target="_blank">
-        <img src="public/github icon.png" alt="GitHub" class="social-icon" />
+      <a href="https://github.com/Severns-Michael" target="_blank" class="nav-button"> Github
+<!--        <img src="public/github icon.png" alt="GitHub" class="social-icon" />-->
       </a>
     </div>
   </div>
@@ -35,6 +35,7 @@ export default {};
   display: flex;
   flex-direction: column;
   overflow: visible;
+
 }
 
 /* Navigation Bar */
@@ -42,8 +43,8 @@ export default {};
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  width: 40%;
+  padding: 1px 2px;
+  width: 50%;
   z-index: 1000;
   position: fixed;
   top: 0;
@@ -62,8 +63,24 @@ export default {};
   margin-right: 20px;
 }
 .logo-icon {
-  width: 50px;
-  height: auto;
+
+  width: 120px;
+  height: 120px;
+
+}
+.nav-button {
+  text-decoration: none;
+  padding: 10px 15px;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white;
+  border-radius: 5px;
+  margin: 5px;
+  display: inline-block;
+  text-align: center;
+}
+.nav-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  color: #ffffff;
 }
 
 /* Navigation Links */

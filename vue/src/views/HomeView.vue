@@ -1,31 +1,37 @@
 <template>
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Style</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
   <div class="intro">
     <header class="type-effect">Hello! I am</header>
-    <h1 class="type-effect type-effect-delay1" >Michael Severns</h1>
+    <h1 class="type-effect type-effect-delay1">Michael Severns</h1>
     <h2 class="type-effect type-effect-delay2">Full-Stack Java Developer</h2>
-
+    <img
+        src="/image_67175681.JPG"
+        alt="A professional photo of Michael Severns"
+        class="profile-image hidden"
+    />
   </div>
-  </body>
-  </html>
-
-
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      imageSrc: "/image_67175681.JPG",
+    };
+  },
+  mounted() {
+    const profileImage = this.$el.querySelector(".profile-image");
+    setTimeout(() => {
+      if (profileImage) {
+        profileImage.classList.remove("hidden");
+        profileImage.style.visibility = "visible";
+      }
+    }, 2000);
+  },
 };
 </script>
 
 <style scoped>
+
 .intro {
   display: flex;
   flex-direction: column;
@@ -34,60 +40,65 @@ export default {
   height: 100vh;
   width: 100%;
   font-family: 'Roboto', sans-serif;
-  background-color: #222;
+  background: linear-gradient(to bottom, #3586bd, black);
   color: #fff;
-
+  margin: 0;
 }
 
 .intro header {
   font-size: 3rem;
-
-
+  margin-bottom: 10px;
 }
+
 .intro h1 {
   font-size: 3rem;
-
+  margin: 0;
 }
+
 .intro h2 {
   font-size: 2rem;
+  margin: 0;
 }
 
-.type-effect{
-  animation-delay: 10s;
+.type-effect {
   position: relative;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   font-weight: bold;
   font-size: 2rem;
-  animation: typing 3s steps(45, end), blink-caret 0.3s step-end infinite;
   text-align: center;
   margin: 0 auto;
-  visibility: hidden;
+  animation: typing 3s steps(45, end), blink-caret 0.3s step-end infinite;
+  opacity: 0;
+  animation-delay: 0s;
   animation-fill-mode: forwards;
-
+  visibility: visible;
 }
-.type-effect-delay1{
-  animation-delay: .5s;
 
+.type-effect-delay1 {
+  animation-delay: 0.5s;
 }
+
 .type-effect-delay2 {
   animation-delay: 1s;
 }
+
 @keyframes typing {
   0% {
-
     width: 0;
+    opacity: 1;
   }
   100% {
     width: 100%;
-    visibility: visible;
+    opacity: 1;
   }
 }
-@keyframes blink-caret {
-  from, to {
-    border-color: transparent;
 
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
   }
   50% {
     border-color: #58a6ff;
@@ -95,4 +106,22 @@ export default {
 }
 
 
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px #fff;
+  margin-bottom: 20px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  visibility: visible;
+  margin-top: 20px;
+}
+
+.profile-image.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 </style>
