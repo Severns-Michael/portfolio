@@ -18,6 +18,9 @@ import com.portfolio.dao.UserDao;
 import com.portfolio.security.jwt.JWTFilter;
 import com.portfolio.security.jwt.TokenProvider;
 
+import java.util.Collection;
+import java.util.Collections;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -69,5 +72,7 @@ public class AuthenticationController {
         }
     }
 
+
 }
+
 
