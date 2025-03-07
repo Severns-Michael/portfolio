@@ -2,69 +2,79 @@
   <div class="project">
     <h1>Projects</h1>
     <div class="projects_list">
-      <div v-for="(project, index) in projects" :key="index" class="project-item">
+      <div
+          v-for="project in projects"
+          :key="project.title"
+          class="project-item"
+      >
         <h2>{{ project.title }}</h2>
         <div class="project_imgs">
           <img
-              v-for="(img, imgIndex) in project.images"
-              :key="imgIndex"
+              v-for="img in project.images"
+              :key="img"
               :src="img"
-              :alt="'Image for ' + project.title"
-              @click="openImageModal(img)"
+              :alt="'Image for ' + (project.title || 'Project')"
+              @click.stop="openImageModal(img)"
               class="img-thumbnail"
           />
         </div>
         <p>{{ project.description }}</p>
       </div>
     </div>
-    <div v-if="showModal" class="image-modal">
-      <div class="modal-backdrop"
-           @click="closeImageModal"></div>
-      <div class="modal-content">
-        <img :src="selectedImage" alt="Large View" />
-        <button class="close-btn"
-                @click="closeImageModal">Close</button>
+
+    <!-- Add transition for modal -->
+    <transition name="modal-fade">
+      <div v-if="showModal" class="image-modal">
+        <!-- Backdrop for dark background -->
+        <div class="modal-backdrop" @click="closeImageModal"></div>
+
+        <!-- Image content -->
+        <div class="modal-content">
+          <img :src="selectedImage" v-if="selectedImage" alt="Large View" />
+          <button class="close-btn" @click="closeImageModal">Close</button>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
-
-
 </template>
 
 <script>
-export default {
+  export default {
   data() {
-    return {
-      projects: [
-        {
-          title: "Found Hound",
-          description: "placeholder",
-          images: [
-            "/vue logo.png",
-            "/sql.png",
-          ],
-        },
-      ],
-      showModal: false,
-      selectedImage: null,
-    };
-  },
+  return {
+  projects: [
+{
+  title: "Found Hound",
+  description: "placeholder",
+  images: [
+  "/vue_logo.png", // Ensure the path is correct
+  "/sql.png",
+  ],
+},
+  ],
+  showModal: false, // Controls whether modal is displayed
+  selectedImage: null, // Dynamic image selected for modal
+};
+},
   methods: {
-    openImageModal(img) {
-      console.log("img",img);
-      this.selectedImage = img;
-      this.showModal = true;
-
-    },
-    closeImageModal() {
-      this.showModal = false;
-      this.selectedImage = null;
-    },
-  },
+  openImageModal(img) {
+  // Open modal and set selected image
+  this.selectedImage = img;
+  this.showModal = true;
+},
+  closeImageModal() {
+  // Reset modal state
+  this.showModal = false;
+  this.selectedImage = null;
+},
+},
 };
 </script>
 
+
 <style scoped>
+
+  /* General styles */
 .project {
   padding: 20px;
 }
@@ -94,6 +104,8 @@ export default {
 .project_imgs img:hover {
   transform: scale(1.1);
 }
+
+/* Modal styles */
 .image-modal {
   position: fixed;
   top: 0;
@@ -104,19 +116,13 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8); /* Dark translucent background */
 }
 .modal-content {
   z-index: 1001;
   position: relative;
   max-width: 90%;
   max-height: 90%;
-
-}
-.modal-content img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
 }
 .modal-backdrop {
   position: absolute;
@@ -125,6 +131,11 @@ export default {
   top: 0;
   left: 0;
   cursor: pointer;
+}
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 .close-btn {
   position: absolute;
@@ -138,5 +149,19 @@ export default {
   height: 30px;
   font-size: 16px;
   cursor: pointer;
+}
+.close-btn:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Add transition effect for modal */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
 }
 </style>
