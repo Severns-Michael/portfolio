@@ -2,35 +2,30 @@
   <div class="project">
     <h1>Projects</h1>
     <div class="projects_list">
-      <div
-          v-for="project in projects"
-          :key="project.title"
-          class="project-item"
-      >
+      <div v-for="(project, index) in projects" :key="index" class="project-item">
         <h2>{{ project.title }}</h2>
         <div class="project_imgs">
           <img
-              v-for="img in project.images"
+              v-for="(img, idx) in project.images"
               :key="img"
               :src="img"
               :alt="'Image for ' + (project.title || 'Project')"
-              @click.stop="openImageModal(img)"
               class="img-thumbnail"
+              @click.stop="openImageModal(img)"
+              @error="handleImageError"
           />
         </div>
         <p>{{ project.description }}</p>
       </div>
     </div>
 
-    <!-- Add transition for modal -->
     <transition name="modal-fade">
       <div v-if="showModal" class="image-modal">
-        <!-- Backdrop for dark background -->
         <div class="modal-backdrop" @click="closeImageModal"></div>
-
-        <!-- Image content -->
         <div class="modal-content">
-          <img :src="selectedImage" v-if="selectedImage" alt="Large View" />
+          <p v-if="!selectedImage">No image selected</p> <!-- For debugging -->
+          <p v-else>Selected Image: {{ selectedImage }}</p> <!-- Debugging -->
+          <img :src="selectedImage" v-if="selectedImage" alt="Large View" @error="handleImageError" />
           <button class="close-btn" @click="closeImageModal">Close</button>
         </div>
       </div>
@@ -39,42 +34,67 @@
 </template>
 
 <script>
-  export default {
+
+export default {
   data() {
-  return {
-  projects: [
-{
-  title: "Found Hound",
-  description: "placeholder",
-  images: [
-  "/vue_logo.png", // Ensure the path is correct
-  "/sql.png",
-  ],
-},
-  ],
-  showModal: false, // Controls whether modal is displayed
-  selectedImage: null, // Dynamic image selected for modal
-};
-},
+
+    return {
+
+      projects: [
+        {
+          title: "MusicLFG",
+          description: "placeholder",
+          images: ["/vue_logo.png", "/sql.png"],
+        },
+        {
+          title: "Portfolio",
+          description: "placeholder",
+        },
+        {
+          title: "Found Hound",
+          description: "placeholder",
+          images: ["/vue_logo.png", "/sql.png"],
+        },
+        {
+          title: "Tenmo",
+          description: "placeholder",
+          images: ["/vue_logo.png", "/sql.png"],
+        },
+        {
+          title: "Vending Machine",
+          description: "placeholder",
+          images: ["/vue_logo.png", "/sql.png"],
+        }
+      ],
+      showModal: false,
+      selectedImage: null,
+    };
+  },
   methods: {
-  openImageModal(img) {
-  // Open modal and set selected image
-  this.selectedImage = img;
-  this.showModal = true;
-},
-  closeImageModal() {
-  // Reset modal state
-  this.showModal = false;
-  this.selectedImage = null;
-},
-},
+    openImageModal(img) {
+      console.log('Image clicked:', img); // For debugging
+      this.selectedImage = img;
+      this.showModal = true;
+    },
+    closeImageModal() {
+      this.showModal = false;
+      this.selectedImage = null;
+    },
+    handleImageError(event) {
+      console.error('Failed to load image:', event.target.src); // Debug
+      event.target.src = '/default-placeholder.png'; // Fallback image path
+    },
+  },
 };
 </script>
 
 
 <style scoped>
+body {
+  overflow: visible;
+}
 
-  /* General styles */
+
 .project {
   padding: 20px;
 }
@@ -105,7 +125,6 @@
   transform: scale(1.1);
 }
 
-/* Modal styles */
 .image-modal {
   position: fixed;
   top: 0;
@@ -116,26 +135,34 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.8); /* Dark translucent background */
 }
 .modal-content {
   z-index: 1001;
   position: relative;
   max-width: 90%;
   max-height: 90%;
-}
-.modal-backdrop {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4)
 }
 .modal-content img {
-  width: 100%;
+  width: auto;
   height: auto;
-  border-radius: 5px;
+  max-width: 100%;
+  max-height: 100%;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* translucent black */
+  z-index: 1000;
 }
 .close-btn {
   position: absolute;
@@ -154,14 +181,13 @@
   outline: 2px solid white;
   outline-offset: 2px;
 }
-
-/* Add transition effect for modal */
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.5s ease;
+.modal-fade-enter-active, .modal-fade-leave-active {
+  transition: opacity 0.3s;
 }
-.modal-fade-enter-from,
-.modal-fade-leave-to {
+.modal-fade-enter-from, .modal-fade-leave-to {
   opacity: 0;
+}
+.modal-fade-enter-to, .modal-fade-leave-from {
+  opacity: 1;
 }
 </style>
