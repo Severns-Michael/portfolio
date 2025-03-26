@@ -117,20 +117,18 @@ export default {
   }
 }
 
-.dropdown_menu {
   .dropdown_menu {
-    opacity: 0; /* Start hidden */
-    visibility: hidden; /* Start hidden */
     position: absolute;
     right: 2rem;
-    top: 60px;
+    top: 80px;
     width: 300px;
-    background-color: white;
+    background-color: #fff;
     backdrop-filter: blur(10px);
-    overflow: hidden;
-    border-radius: 10px;
+    border-radius: 7px;
+
+
   }
-}
+
 .dropdown_menu .nav-button {
   padding: 1rem;
   display: flex;
