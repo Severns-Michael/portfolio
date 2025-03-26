@@ -1,99 +1,142 @@
 <template>
   <div id="container">
-    <div id="nav">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <div class="navbar">
       <div id="logo">
-        <img src="public/logo 3(1).png" alt="Logo" class="logo-icon" />
+        MS Labs
       </div>
-      <router-link v-bind:to="{ name: 'home' }" class="nav-button"> Home
-      </router-link>
-      <router-link v-bind:to="{ name: 'about' }" class="nav-button"> About
-      </router-link>
-      <router-link v-bind:to="{ name: 'project' }" class="nav-button"> Projects
-      </router-link>
-      <a href="https://www.linkedin.com/in/michaelsevernsdev/" target="_blank" class="nav-button"> LinkedIn</a>
-      <a href="https://github.com/Severns-Michael" target="_blank" class="nav-button"> Github
-<!--        <img src="public/github icon.png" alt="GitHub" class="social-icon" />-->
-      </a>
+
+      <!-- Desktop links -->
+      <div id="links">
+        <router-link :to="{ name: 'home' }" class="nav-button">Home</router-link>
+        <router-link :to="{ name: 'about' }" class="nav-button">About</router-link>
+        <router-link :to="{ name: 'project' }" class="nav-button">Projects</router-link>
+        <a href="https://www.linkedin.com/in/michaelsevernsdev/" class="nav-button">
+          LinkedIn
+        </a>
+        <a href="https://github.com/Severns-Michael" class="nav-button">
+          Github
+        </a>
+      </div>
+
+      <!-- Toggle button (visible on smaller screens) -->
+      <div class="toggle_btn" @click="toggleDropdown">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <!-- Dropdown menu (hidden by default) -->
+      <div class="dropdown_menu" v-show="dropdownVisible">
+        <router-link :to="{ name: 'home' }" class="nav-button">Home</router-link>
+        <router-link :to="{ name: 'about' }" class="nav-button">About</router-link>
+        <router-link :to="{ name: 'project' }" class="nav-button">Projects</router-link>
+        <a href="https://www.linkedin.com/in/michaelsevernsdev/" class="nav-button">
+          LinkedIn
+        </a>
+        <a href="https://github.com/Severns-Michael" class="nav-button">
+          Github
+        </a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      dropdownVisible: false, // Keep track of dropdown visibility
+    };
+  },
+  methods: {
+    toggleDropdown() {
+      this.dropdownVisible = !this.dropdownVisible; // Toggle visibility state
+    },
+    handleResize() {
+      // Check if the screen is larger than 992px and reset the dropdown visibility
+      if (window.innerWidth > 992) {
+        this.dropdownVisible = false; // Hide dropdown if screen is enlarged
+      }
+    },
+  },
+  mounted() {
+    // Add a resize event listener on mount
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeUnmount() {
+    // Clean up the listener on unmount
+    window.removeEventListener('resize', this.handleResize);
+  },
+};
 </script>
 
 <style scoped>
-
 #container {
   width: 100%;
   display: flex;
   flex-direction: column;
   overflow: visible;
-
 }
-
 /* Navigation Bar */
-#nav {
-  display: flex;
-  align-items: center;
-  padding: 1px 2px;
-  z-index: 1000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+.navbar {
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
   margin: 0 auto;
-  background-color: hsla(0, 0%, 20%, 40%);
-  backdrop-filter: blur(10px);
-  margin-top: 10px;
-
+  display: flex;
+  justify-content: space-between;
 }
-
-/* Logo */
-#logo {
-  margin-right: 2px;
-}
-.logo-icon {
-
-  width: 120px;
-  height: 120px;
-
+#links {
+  display: flex;
+  gap: 2rem;
 }
 .nav-button {
   text-decoration: none;
-  padding: 10px 15px;
-  background-color: #007bff; /* Bootstrap primary blue */
-  color: white;
-  border-radius: 5px;
-  margin: 5px;
-  display: inline-block;
-  text-align: center;
+  color: inherit;
 }
-.nav-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  color: #ffffff;
+.toggle_btn {
+  color: black;
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+
+}
+@media (max-width: 992px) {
+  .toggle_btn {
+    display: block;
+  }
 }
 
-/* Navigation Links */
-.nav-icon,
-.social-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin: 0 10px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+
+@media (max-width: 992px) {
+  #links {
+    display: none;
+  }
 }
 
-.nav-icon:hover,
-.social-icon:hover {
-  transform: scale(1.1);
+.dropdown_menu {
+  .dropdown_menu {
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start hidden */
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    width: 300px;
+    background-color: white;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    border-radius: 10px;
+  }
+}
+.dropdown_menu .nav-button {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#content {
-  margin-top: 20px;
-  padding: 0 20px;
-  line-height: 1.6;
-  font-size: 16px;
-}
+
 </style>

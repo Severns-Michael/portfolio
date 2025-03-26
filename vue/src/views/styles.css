@@ -1,0 +1,22 @@
+body {
+    height: 100vh;
+    background-color: #000;
+    background-image: url("https://source.unsplash.com/1600x900/?nature");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+li{
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+a:hover {
+    color: blue;
+}
+
+
