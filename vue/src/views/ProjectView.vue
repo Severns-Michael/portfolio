@@ -90,13 +90,15 @@ export default {
 
 
 <style scoped>
-body {
-  overflow: visible;
-}
 
+html, body {
+  height: auto;
+  min-height: 100vh;
+}
 
 .project {
   padding: 20px;
+  min-height: 100vh;
 }
 .projects_list {
   display: flex;
@@ -180,14 +182,5 @@ body {
 .close-btn:focus {
   outline: 2px solid white;
   outline-offset: 2px;
-}
-.modal-fade-enter-active, .modal-fade-leave-active {
-  transition: opacity 0.3s;
-}
-.modal-fade-enter-from, .modal-fade-leave-to {
-  opacity: 0;
-}
-.modal-fade-enter-to, .modal-fade-leave-from {
-  opacity: 1;
 }
 </style>

@@ -36,8 +36,8 @@ body {
 #app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow: visible;
 }
 
 
