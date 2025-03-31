@@ -1,6 +1,6 @@
 <template>
   <div class="project">
-    <h1>Projects</h1>
+
     <div class="projects_list">
       <div v-for="(project, index) in projects" :key="index" class="project-item">
         <h2>{{ project.title }}</h2>
@@ -42,28 +42,23 @@ export default {
 
       projects: [
         {
-          title: "MusicLFG",
-          description: "placeholder",
-          images: ["/vue_logo.png", "/sql.png"],
-        },
-        {
           title: "Portfolio",
-          description: "placeholder",
+          description: "Developer Portfolio website, built with Vue.js, JavaScript, Html and CSS.",
         },
         {
           title: "Found Hound",
-          description: "placeholder",
-          images: ["/vue_logo.png", "/sql.png"],
+          description: "A full-stack web application that helps users find their ideal dog match by considering their preferences and swiping behavior. Built with Java, Spring Boot, Vue.js, SQL, and a RESTful API, Found Hound streamlines the adoption process by intelligently recommending dogs based on user interactions. The intuitive interface, powered by HTML, CSS, and JavaScript, provides a seamless experience for discovering, swiping, and connecting with potential furry companions.",
+          images: [],
         },
         {
           title: "Tenmo",
-          description: "placeholder",
-          images: ["/vue_logo.png", "/sql.png"],
+          description: "This backend application enables users to securely send and receive money using a RESTful API built with Java and Spring Boot. It facilitates transactions between registered users while maintaining account balances and transaction history.",
+          images: [],
         },
         {
           title: "Vending Machine",
-          description: "placeholder",
-          images: ["/vue_logo.png", "/sql.png"],
+          description: "A back end application that allows users to buy items from a vending machine. Built with Java.",
+          images: [],
         }
       ],
       showModal: false,
@@ -90,6 +85,12 @@ export default {
 
 
 <style scoped>
+h2 {
+  color: #00ff00;
+}
+p {
+  color: #ccc;
+}
 
 html, body {
   height: auto;
@@ -104,9 +105,24 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-height: 650px;
+  overflow-y: auto;
+  padding-right: 10px;
+  background-color: #222222;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.projects_list::-webkit-scrollbar {
+  width: 8px;
+}
+.projects_list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+.projects_list::-webkit-scrollbar-track {
+  background: transparent;
 }
 .project-item {
-  border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
 }

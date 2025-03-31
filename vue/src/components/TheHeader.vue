@@ -70,6 +70,11 @@ export default {
 </script>
 
 <style scoped>
+#logo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ff00;
+}
 #container {
   width: 100%;
   display: flex;
@@ -88,13 +93,19 @@ export default {
 #links {
   display: flex;
   gap: 2rem;
+  color: #444;
 }
+
 .nav-button {
   text-decoration: none;
   color: inherit;
 }
+.nav-button:hover {
+  color: #00ff00;
+  text-decoration: underline;
+}
 .toggle_btn {
-  color: black;
+  color: #00ff00;
   font-size: 2rem;
   cursor: pointer;
   display: none;
@@ -122,7 +133,7 @@ export default {
     right: 2rem;
     top: 80px;
     width: 300px;
-    background-color: #fff;
+    background-color: #444444;
     backdrop-filter: blur(10px);
     border-radius: 7px;
 
@@ -134,6 +145,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.dropdown_menu .nav-button:hover {
+  background-color: #00ff00;
+  color: #000000;
+  text-decoration: underline;
 }
 
 

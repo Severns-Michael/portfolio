@@ -1,8 +1,8 @@
 <template>
   <div class="intro">
-    <header class="type-effect">Hello! I am</header>
-    <h1 class="type-effect type-effect-delay1">Michael Severns</h1>
-    <h2 class="type-effect type-effect-delay2">Full-Stack Java Developer</h2>
+    <header class="type-effect">Michael Severns</header>
+    <h1 class="type-effect type-effect-delay1">Full-Stack Java Developer</h1>
+    <h2 class="type-effect type-effect-delay2"></h2>
     <img
         src="/image_67175681.JPG"
         alt="A professional photo of Michael Severns"
@@ -40,8 +40,7 @@ export default {
   height: 100vh;
   width: 100%;
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to bottom, #3586bd, black);
-  color: #fff;
+  color: #00ff00;
   margin: 0;
 }
 
@@ -109,10 +108,10 @@ export default {
 .profile-image {
   width: 200px;
   height: 200px;
-  border-radius: 50%;
   object-fit: cover;
-  border: 5px solid #fff;
-  box-shadow: 0 0 10px #fff;
+  background-color: black; /* Black background */
+  border: 5px solid #444;
+  box-shadow: 0 0 10px #444;
   margin-bottom: 20px;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;

@@ -29,7 +29,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: auto;
   font-family: Arial, sans-serif;
 }
 
@@ -37,14 +36,15 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow: visible;
 }
 
-
-#main-content {
+router-view {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
 }
 
+the-footer {
+  width: 100%;
+  position: relative;
+}
 </style>
