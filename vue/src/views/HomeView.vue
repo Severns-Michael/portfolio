@@ -4,27 +4,26 @@
     <h1 class="type-effect type-effect-delay1">Full-Stack Java Developer</h1>
     <h2 class="type-effect type-effect-delay2"></h2>
     <img
-        src="/image_67175681.JPG"
+        :src="imageSrc"
         alt="A professional photo of Michael Severns"
-        class="profile-image hidden"
+        class="profile-image"
+        :class="{ hidden: !imageVisible }"
     />
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      imageSrc: "/image_67175681.JPG",
+      imageVisible: false,
+      imageSrc: 'profile.jpg',
     };
   },
   mounted() {
-    const profileImage = this.$el.querySelector(".profile-image");
     setTimeout(() => {
-      if (profileImage) {
-        profileImage.classList.remove("hidden");
-        profileImage.style.visibility = "visible";
-      }
+      this.imageVisible = true;
     }, 2000);
   },
 };
