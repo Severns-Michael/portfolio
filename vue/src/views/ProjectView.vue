@@ -45,6 +45,9 @@ export default {
           title: "Tower Defense Game",
           description: "A custom-built Tower Defense game featuring a React UI and PhaserJS game engine. Players strategically place and upgrade towers across elemental paths—Fire, Ice, Lightning, and Physical—to defend against increasingly challenging waves of enemies (Grunts, Fast, Brutes, Bosses). Each tower has unique modifiers Like Freeze, Burn, Chain Lightning. Includes a visual tile-based level editor, upgrade path system (T3 max path + T2 secondary), enemy reward logic, wave progression, and endgame win/loss logic.",
           images: [
+            "/public/level_editor.PNG",
+              "/public/place_tower.PNG",
+              "/public/gameplay.PNG",
 
           ]
         },
