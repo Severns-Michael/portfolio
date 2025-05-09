@@ -42,13 +42,25 @@ export default {
 
       projects: [
         {
+          title: "Tower Defense Game",
+          description: "A custom-built Tower Defense game featuring a React UI and PhaserJS game engine. Players strategically place and upgrade towers across elemental paths—Fire, Ice, Lightning, and Physical—to defend against increasingly challenging waves of enemies (Grunts, Fast, Brutes, Bosses). Each tower has unique modifiers Like Freeze, Burn, Chain Lightning. Includes a visual tile-based level editor, upgrade path system (T3 max path + T2 secondary), enemy reward logic, wave progression, and endgame win/loss logic.",
+          images: [
+
+          ]
+        },
+        {
           title: "Portfolio",
           description: "Developer Portfolio website, built with Vue.js, JavaScript, Html and CSS.",
         },
         {
           title: "Found Hound",
           description: "A full-stack web application that helps users find their ideal dog match by considering their preferences and swiping behavior. Built with Java, Spring Boot, Vue.js, SQL, and a RESTful API, Found Hound streamlines the adoption process by intelligently recommending dogs based on user interactions. The intuitive interface, powered by HTML, CSS, and JavaScript, provides a seamless experience for discovering, swiping, and connecting with potential furry companions.",
-          images: [],
+          images: [require('@/assets/found.PNG'),
+              require('@/assets/found_found_home.PNG'),
+            require('@/assets/found_hound_swipe.PNG')
+            // require('@/assets/')
+
+          ],
         },
         {
           title: "Tenmo",
