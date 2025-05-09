@@ -4,6 +4,7 @@
     <div class="projects_list">
       <div v-for="(project, index) in projects" :key="index" class="project-item">
         <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
         <div class="project_imgs">
           <img
               v-for="(img, idx) in project.images"
@@ -15,7 +16,6 @@
               @error="handleImageError"
           />
         </div>
-        <p>{{ project.description }}</p>
       </div>
     </div>
 
@@ -23,10 +23,10 @@
       <div v-if="showModal" class="image-modal">
         <div class="modal-backdrop" @click="closeImageModal"></div>
         <div class="modal-content">
-          <p v-if="!selectedImage">No image selected</p> <!-- For debugging -->
-          <p v-else>Selected Image: {{ selectedImage }}</p> <!-- Debugging -->
+          <p v-if="!selectedImage">No image selected</p>
+          <p v-else>Selected Image: {{ selectedImage }}</p>
           <img :src="selectedImage" v-if="selectedImage" alt="Large View" @error="handleImageError" />
-          <button class="close-btn" @click="closeImageModal">Close</button>
+          <button class="close-btn" @click="closeImageModal">x</button>
         </div>
       </div>
     </transition>
@@ -55,10 +55,13 @@ export default {
         {
           title: "Found Hound",
           description: "A full-stack web application that helps users find their ideal dog match by considering their preferences and swiping behavior. Built with Java, Spring Boot, Vue.js, SQL, and a RESTful API, Found Hound streamlines the adoption process by intelligently recommending dogs based on user interactions. The intuitive interface, powered by HTML, CSS, and JavaScript, provides a seamless experience for discovering, swiping, and connecting with potential furry companions.",
-          images: [require('@/assets/found.PNG'),
-              require('@/assets/found_found_home.PNG'),
-            require('@/assets/found_hound_swipe.PNG')
-            // require('@/assets/')
+          images: [
+            "/public/found.PNG",
+            "/public/found_found_home.PNG",
+            "/public/found_hound_swipe.PNG",
+              "/public/landingpage.PNG",
+              "/public/login.PNG",
+
 
           ],
         },
@@ -117,7 +120,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-height: 650px;
+  max-height: 800px;
   overflow-y: auto;
   padding-right: 10px;
   background-color: #222222;
@@ -146,7 +149,7 @@ html, body {
 .project_imgs img {
   cursor: pointer;
   width: 100px;
-  height: auto;
+  height: 80px;
   border: 1px solid #ddd;
   border-radius: 5px;
   transition: transform 0.2s ease;
